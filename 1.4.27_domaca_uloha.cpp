@@ -55,7 +55,7 @@ for (i=a; i<15; i++)
 {
 for (j=a; j<15;j++)
 {
-if (A[j]>A[j+1])
+if (A[j]>=A[j+1])
 {
 pocet=pocet+1;
 a++;
