@@ -105,23 +105,24 @@ a=0;
 	mas[i]=pocet;
 	pocet=1;
 	}
-}  
+}
+  
 int najvacsi_usek;
 if (rastuci_usek>klesajuci_usek)najvacsi_usek=rastuci_usek;
 else najvacsi_usek = klesajuci_usek;
-ip=&najvacsi_usek;
-printf("dlzka najdlhsieho monotonneho useka: %d\n",*ip);
+*ip=najvacsi_usek;
 return p;
 }	
 
 
 int main()
 {
-int i,j,lp,pocet=0,n=0,*c;
+int i,j,lp,pocet=0,n=0,*c,d;
 int a=0;
 int *p;	
 int *ip;
+ip=&d;
 c=najdi_najdlhsi_monotonny_usek(p,lp,ip);
-printf("adresa najdlhsieho monotonneho useka: %d",c);
-
+printf("adresa najdlhsieho monotonneho useka: %d\n ",c);
+printf("dlzka najdlhsieho monotonneho useka: %d",d);
 }
