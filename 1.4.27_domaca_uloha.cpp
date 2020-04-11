@@ -10,7 +10,6 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	
 	srand(time(0));
 	
-	
 	for(i=0;i<15;i++)
 	{
 		lp=rand()%10+1;
@@ -20,49 +19,57 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	
 	printf("\n");
 	
-	
 	int mas[15]={};
 	int pocet=1;
 	
-	
-		for (i=a; i<15; i++)
+	for (i=a; i<15; i++)
+	{
+		for (j=a; j<15;j++)
 		{
-			for (j=a; j<15;j++)
+			if (A[j]<=A[j+1])
 			{
-				if (A[j]<=A[j+1])
-				{
 				pocet=pocet+1;
 				a++;
-				}
-				else
-				{
+			}
+			else
+			{
 				a++;
 				break;
-				}
 			}
+		}
+		
 		mas[i]=pocet;
 		pocet=1;
-		}
+	}
 	
 	int rastuci_usek=0;
-	for (j=0; j<15;j++){
-	if(mas[j]>rastuci_usek)rastuci_usek=mas[j];
+	
+	for (j=0; j<15;j++)
+	{
+		if(mas[j]>rastuci_usek)
+		rastuci_usek=mas[j];
 	}
 	
 	a=0;
-	for (i=a; i<15; i++){
-		for (j=a; j<15;j++){
-			if (A[j]>=A[j+1]){
+	
+	for (i=a; i<15; i++)
+	{
+		for (j=a; j<15;j++)
+		{
+			if (A[j]>=A[j+1])
+			{
 				pocet=pocet+1;
 				a++;
-				}
-			else{
-			a++;
-			break;
+			}
+			else
+			{
+				a++;
+				break;
 			}
 		}
-	mas[i]=pocet;
-	pocet=1;
+		
+		mas[i]=pocet;
+		pocet=1;
 	}
 	
 	
