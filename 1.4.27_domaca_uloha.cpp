@@ -10,11 +10,10 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	int *A[15];
 	srand(time(0));
     
-	printf("   %d   ",p);
+
 	for(i=0;i<15;i++)
 	{	
-	A[i]=(p+i);
-	printf(" %d ",*A[i]);	
+	A[i]=(p+i);	
 	}
 	
 	int mas[15]={};
@@ -23,7 +22,13 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	for (i=a; i<15; i++)
 	{
 		for (j=a; j<15;j++)
-		{
+		{	
+			if(j==15)
+			{
+				if(*A[j]<=*A[j+1])
+				break;
+			}
+			
 			if (*A[j]<=*A[j+1])
 			{
 				pocet=pocet+1;
@@ -53,7 +58,13 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	for (i=a; i<15; i++)
 	{
 		for (j=a; j<15;j++)
-		{
+		{   
+			if(j==15)
+			{
+				if(*A[j]<=*A[j+1])
+				break;
+			}
+			
 			if (*A[j]>=*A[j+1])
 			{
 				pocet=pocet+1;
@@ -65,7 +76,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 				break;
 			}
 		}
-		
+		mas[i]=0;
 		mas[i]=pocet;
 		pocet=1;
 	}
@@ -78,7 +89,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 		klesajuci_usek=mas[j];
 	}
 	
-	if (rastuci_usek>klesajuci_usek)
+	if (rastuci_usek>=klesajuci_usek)
 	{
 		a=0; 
 		  
@@ -140,7 +151,6 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	else najvacsi_usek = klesajuci_usek;
 	
 	*ip=najvacsi_usek;
-printf("   %d   ",A[2]);
 	return p;
 	
 }	
@@ -156,9 +166,7 @@ int main()
 	{
 		lp=rand()%10+1;
 		A[i]=lp;
-
-
-		
+		printf("%d ",A[i]);
 	}
 		
 	p=&A[0];
@@ -168,10 +176,14 @@ int main()
 	ip=&d;
 	
 	c=najdi_najdlhsi_monotonny_usek(p,lp,ip);
-	printf("%d",c);
-	for (i=0;i<d;i++){
+	printf("najvatsi monotonny usek: ");
 	
-	printf(" %d ",*(c+i));}
+	for (i=0;i<d;i++)
+	{
+		printf(" %d ",*(c+i));
+	}
+	
+	printf("\n");
 	
 	printf("Adresa najdlhsieho monotonneho useka: %d\n ",c);
 	printf("Dlzka najdlhsieho monotonneho useka: %d",d);
