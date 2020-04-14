@@ -6,14 +6,15 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	
 	int i,j;
 	int a=0;
-	int A[15];
-	
+	int *z;
+	int *A[15];
 	srand(time(0));
-	
+    
+	printf("   %d   ",p);
 	for(i=0;i<15;i++)
-	{
-		lp=rand()%10+1;
-		A[i]=lp;
+	{	
+	A[i]=(p+i);
+	printf(" %d ",*A[i]);	
 	}
 	
 	int mas[15]={};
@@ -23,7 +24,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	{
 		for (j=a; j<15;j++)
 		{
-			if (A[j]<=A[j+1])
+			if (*A[j]<=*A[j+1])
 			{
 				pocet=pocet+1;
 				a++;
@@ -53,7 +54,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	{
 		for (j=a; j<15;j++)
 		{
-			if (A[j]>=A[j+1])
+			if (*A[j]>=*A[j+1])
 			{
 				pocet=pocet+1;
 				a++;
@@ -85,7 +86,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 		{
 			for (j=a; j<15;j++)
 			{
-	    		if (A[j]<=A[j+1])
+	    		if (*A[j]<=*A[j+1])
 				{
 					pocet=pocet+1;
 					a++;
@@ -95,7 +96,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 					a++;
 					
 					if (pocet==rastuci_usek)
-					p=&A[j-rastuci_usek+1];
+					p=A[j-rastuci_usek+1];
 					break;
 				}
 			}
@@ -112,7 +113,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 		{	
 			for (j=a; j<15;j++)
 			{
-				if (A[j]>=A[j+1])
+				if (*A[j]>=*A[j+1])
 				{
 					pocet=pocet+1;
 					a++;
@@ -122,7 +123,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 					a++;
 					
 					if (pocet==klesajuci_usek)
-					p=&A[j-klesajuci_usek+1];
+					p=A[j-klesajuci_usek+1];
 					break;
 				}
 			}
@@ -139,7 +140,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	else najvacsi_usek = klesajuci_usek;
 	
 	*ip=najvacsi_usek;
-	
+printf("   %d   ",A[2]);
 	return p;
 	
 }	
@@ -155,13 +156,22 @@ int main()
 	{
 		lp=rand()%10+1;
 		A[i]=lp;
-		printf("%d ",A[i]);
+
+
+		
 	}
-	
+		
+	p=&A[0];
+
 	printf("\n");
+	
 	ip=&d;
 	
 	c=najdi_najdlhsi_monotonny_usek(p,lp,ip);
+	printf("%d",c);
+	for (i=0;i<d;i++){
+	
+	printf(" %d ",*(c+i));}
 	
 	printf("Adresa najdlhsieho monotonneho useka: %d\n ",c);
 	printf("Dlzka najdlhsieho monotonneho useka: %d",d);
