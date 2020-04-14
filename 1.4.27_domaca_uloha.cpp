@@ -14,10 +14,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	{
 		lp=rand()%10+1;
 		A[i]=lp;
-		printf("%d ",A[i]);
 	}
-	
-	printf("\n");
 	
 	int mas[15]={};
 	int pocet=1;
@@ -79,8 +76,6 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 		if(mas[j]>klesajuci_usek)
 		klesajuci_usek=mas[j];
 	}
-	
-	printf("\n");
 	
 	if (rastuci_usek>klesajuci_usek)
 	{
@@ -153,7 +148,17 @@ int main()
 {
 	int lp,*ip,*p;
 	int *c,d;
+		srand(time(0));
+	int A[15];
+	int i;
+	for(i=0;i<15;i++)
+	{
+		lp=rand()%10+1;
+		A[i]=lp;
+		printf("%d ",A[i]);
+	}
 	
+	printf("\n");
 	ip=&d;
 	
 	c=najdi_najdlhsi_monotonny_usek(p,lp,ip);
