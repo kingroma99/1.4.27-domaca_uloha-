@@ -7,23 +7,22 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	int i,j;
 	int a=0;
 	int *z;
-	int *A[15];
-	srand(time(0));
+	int *A[*ip];
     
 
-	for(i=0;i<15;i++)
+	for(i=0;i<*ip;i++)
 	{	
 	A[i]=(p+i);	
 	}
 	
-	int mas[15]={};
+	int mas[*ip]={};
 	int pocet=1;
 	
-	for (i=a; i<15; i++)
+	for (i=a; i<*ip; i++)
 	{
-		for (j=a; j<15;j++)
+		for (j=a; j<*ip;j++)
 		{	
-			if(j==15)
+			if(j==*ip)
 			{
 				if(*A[j]<=*A[j+1])
 				break;
@@ -47,7 +46,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	
 	int rastuci_usek=0;
 	
-	for (j=0; j<15;j++)
+	for (j=0; j<*ip;j++)
 	{
 		if(mas[j]>rastuci_usek)
 		rastuci_usek=mas[j];
@@ -55,11 +54,11 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	
 	a=0;
 	
-	for (i=a; i<15; i++)
+	for (i=a; i<*ip; i++)
 	{
-		for (j=a; j<15;j++)
+		for (j=a; j<*ip;j++)
 		{   
-			if(j==15)
+			if(j==*ip)
 			{
 				if(*A[j]<=*A[j+1])
 				break;
@@ -83,7 +82,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	
 	int klesajuci_usek=0;
 	
-	for (j=0; j<15;j++)
+	for (j=0; j<*ip;j++)
 	{
 		if(mas[j]>klesajuci_usek)
 		klesajuci_usek=mas[j];
@@ -93,9 +92,9 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	{
 		a=0; 
 		  
-		for (i=a; i<15; i++)
+		for (i=a; i<*ip; i++)
 		{
-			for (j=a; j<15;j++)
+			for (j=a; j<*ip;j++)
 			{
 	    		if (*A[j]<=*A[j+1])
 				{
@@ -120,9 +119,9 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	{ 	
 		a=0;
 		
-		for (i=a; i<15; i++)
+		for (i=a; i<*ip; i++)
 		{	
-			for (j=a; j<15;j++)
+			for (j=a; j<*ip;j++)
 			{
 				if (*A[j]>=*A[j+1])
 				{
@@ -147,10 +146,16 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	int najvacsi_usek;
 	
 	if (rastuci_usek>klesajuci_usek)
-	najvacsi_usek=rastuci_usek;
-	else najvacsi_usek = klesajuci_usek;
+	{
+		najvacsi_usek=rastuci_usek;
+	}
+	else
+	{
+		najvacsi_usek = klesajuci_usek;
+	}
 	
 	*ip=najvacsi_usek;
+	
 	return p;
 	
 }	
@@ -160,19 +165,21 @@ int main()
 	int lp,*ip,*p;
 	int *c,d;
 		srand(time(0));
-	int A[15];
+	printf("zadaj pocet prvkov: ");
+	scanf("%d",&d);
+	
+	int A[d];
 	int i;
-	for(i=0;i<15;i++)
+	for(i=0;i<d;i++)
 	{
 		lp=rand()%10+1;
 		A[i]=lp;
 		printf("%d ",A[i]);
 	}
-		
-	p=&A[0];
-
-	printf("\n");
 	
+	printf("\n");	
+	
+	p=&A[0];
 	ip=&d;
 	
 	c=najdi_najdlhsi_monotonny_usek(p,lp,ip);
