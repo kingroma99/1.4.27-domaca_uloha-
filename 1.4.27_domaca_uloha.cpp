@@ -22,9 +22,11 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	{
 		for (j=a; j<*ip;j++)
 		{	
-			if(j==*ip)
+			if(j==*ip-1)
 			{
-				if(*A[j]<=*A[j+1])
+				if(*A[j-1]<=*A[j])
+				pocet++;
+				a++;
 				break;
 			}
 			
@@ -58,9 +60,11 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	{
 		for (j=a; j<*ip;j++)
 		{   
-			if(j==*ip)
+			if(j==*ip-1)
 			{
-				if(*A[j]<=*A[j+1])
+				if(*A[j-1]<=*A[j])
+				pocet++;
+				a++;
 				break;
 			}
 			
