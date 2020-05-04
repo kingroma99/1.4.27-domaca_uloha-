@@ -20,16 +20,9 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	
 	for (i=a; i<*ip; i++)
 	{
-		for (j=a; j<*ip;j++)
+		for (j=a; j<*ip-1;j++)
 		{	
-			if(j==*ip-1)
-			{
-				if(*A[j-1]<=*A[j])
-				pocet++;
-				a++;
-				break;
-			}
-			
+		
 			if (*A[j]<=*A[j+1])
 			{
 				pocet=pocet+1;
@@ -58,15 +51,8 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	
 	for (i=a; i<*ip; i++)
 	{
-		for (j=a; j<*ip;j++)
+		for (j=a; j<*ip-1;j++)
 		{   
-			if(j==*ip-1)
-			{
-				if(*A[j-1]<=*A[j])
-				pocet++;
-				a++;
-				break;
-			}
 			
 			if (*A[j]>=*A[j+1])
 			{
@@ -98,7 +84,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 		  
 		for (i=a; i<*ip; i++)
 		{
-			for (j=a; j<*ip;j++)
+			for (j=a; j<*ip-1;j++)
 			{
 	    		if (*A[j]<=*A[j+1])
 				{
@@ -125,7 +111,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 		
 		for (i=a; i<*ip; i++)
 		{	
-			for (j=a; j<*ip;j++)
+			for (j=a; j<*ip-1;j++)
 			{
 				if (*A[j]>=*A[j+1])
 				{
