@@ -3,20 +3,18 @@
 #include <time.h>
 
 int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
-	
 	int i,j;
 	int a=0;
 	int *z;
 	int *A[*ip];
-    
-
-	for(i=0;i<*ip;i++)
-	{	
-	A[i]=(p+i);	
-	}
-	
 	int mas[*ip]={};
 	int pocet=1;
+	int rastuci_usek=0;
+	int klesajuci_usek=0;
+	int najvacsi_usek;
+
+	for(i=0;i<*ip;i++)
+    	A[i]=(p+i);	
 	
 	for (i=a; i<*ip; i++)
 	{
@@ -39,13 +37,9 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 		pocet=1;
 	}
 	
-	int rastuci_usek=0;
-	
 	for (j=0; j<*ip;j++)
-	{
 		if(mas[j]>rastuci_usek)
-		rastuci_usek=mas[j];
-	}
+    		rastuci_usek=mas[j];
 	
 	a=0;
 	
@@ -70,13 +64,9 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 		pocet=1;
 	}
 	
-	int klesajuci_usek=0;
-	
 	for (j=0; j<*ip;j++)
-	{
 		if(mas[j]>klesajuci_usek)
-		klesajuci_usek=mas[j];
-	}
+	    	klesajuci_usek=mas[j];
 	
 	if (rastuci_usek>=klesajuci_usek)
 	{
@@ -132,34 +122,29 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 			pocet=1;
 		}
 	}
-	  
-	int najvacsi_usek;
 	
 	if (rastuci_usek>klesajuci_usek)
-	{
 		najvacsi_usek=rastuci_usek;
-	}
 	else
-	{
 		najvacsi_usek = klesajuci_usek;
-	}
 	
 	*ip=najvacsi_usek;
 	
 	return p;
-	
 }	
 
 int main()
 {
 	int lp,*ip,*p;
 	int *c,d;
-		srand(time(0));
+	int A[d];
+	int i;
+
+	srand(time(0));
+
 	printf("zadaj pocet prvkov: ");
 	scanf("%d",&d);
 	
-	int A[d];
-	int i;
 	for(i=0;i<d;i++)
 	{
 		lp=rand()%10+1;
