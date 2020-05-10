@@ -7,11 +7,11 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	int a=0;
 	int *z;
 	int *A[*ip];
-	int mas[*ip]={};
 	int pocet=1;
 	int rastuci_usek=0;
 	int klesajuci_usek=0;
 	int najvacsi_usek;
+	int usek=0;
 
 	for(i=0;i<*ip;i++)
     	A[i]=(p+i);	
@@ -32,15 +32,17 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 				break;
 			}
 		}
-		
-		mas[i]=pocet;
-		pocet=1;
+		if (pocet>usek)
+		{
+		    usek=pocet;
+		    pocet=1;
+		}
+		else pocet=1;
+
 	}
 	
-	for (j=0; j<*ip;j++)
-		if(mas[j]>rastuci_usek)
-    		rastuci_usek=mas[j];
-	
+    rastuci_usek=usek;
+	usek=0;
 	a=0;
 	
 	for (i=a; i<*ip; i++)
@@ -59,14 +61,17 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 				break;
 			}
 		}
-		mas[i]=0;
-		mas[i]=pocet;
-		pocet=1;
+		if (pocet>usek)
+		{
+		    usek=pocet;
+		    pocet=1;
+		}
+		else pocet=1;
 	}
 	
-	for (j=0; j<*ip;j++)
-		if(mas[j]>klesajuci_usek)
-	    	klesajuci_usek=mas[j];
+	klesajuci_usek=usek;
+	usek=0;
+	
 	
 	if (rastuci_usek>=klesajuci_usek)
 	{
@@ -91,7 +96,6 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 				}
 			}
 			
-			mas[i]=pocet;
 			pocet=1;
 		}
 	}	
@@ -118,7 +122,6 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 				}
 			}
 			
-			mas[i]=pocet;
 			pocet=1;
 		}
 	}
