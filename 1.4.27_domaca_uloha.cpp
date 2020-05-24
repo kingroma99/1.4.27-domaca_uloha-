@@ -11,9 +11,9 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	int najvacsi_usek;
 	int usek=0;
 	
-	for (i=a; i<9; i++)
+	for (i=a; i<*ip; i++)
 	{
-		for (j=a; j<9-1;j++)
+		for (j=a; j<*ip-1;j++)
 		{	
 		
 			if (*(p+j)<=*(p+j+1))
@@ -40,9 +40,9 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	usek=0;
 	a=0;
 	
-	for (i=a; i<9; i++)
+	for (i=a; i<*ip; i++)
 	{
-		for (j=a; j<9-1;j++)
+		for (j=a; j<*ip-1;j++)
 		{   
 			
 			if (*(p+j)>=*(p+j+1))
@@ -72,9 +72,9 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	{
 		a=0; 
 		  
-		for (i=a; i<9; i++)
+		for (i=a; i<*ip; i++)
 		{
-			for (j=a; j<9-1;j++)
+			for (j=a; j<*ip-1;j++)
 			{
 	    		if (*(p+j)<=*(p+j+1))
 				{
@@ -82,12 +82,10 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 					a++;
 					if (pocet==rastuci_usek)
 					p=(p+j-rastuci_usek+2);
-				
 				}
 				else
 				{
 					a++;
-				
 					break;
 				}
 			}
@@ -99,22 +97,20 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	{ 	
 		a=0;
 		
-		for (i=a; i<9; i++)
+		for (i=a; i<*ip; i++)
 		{	
-			for (j=a; j<9-1;j++)
+			for (j=a; j<*ip-1;j++)
 			{
 				if (*(p+j)>=*(p+j+1))
 				{
 					pocet=pocet+1;
 					a++;
-						if (pocet==klesajuci_usek)
+					if (pocet==klesajuci_usek)
 					p=(p+j-klesajuci_usek+2);
 				}
 				else
 				{
 					a++;
-					
-				
 					break;
 				}
 			}
@@ -137,12 +133,20 @@ int main()
 {
 	int lp,*ip,*p;
 	int *c,d;
-	int A[9]={4,9,2,4,10,8,9,9,9};
+	int A[d];
 	int i;
-for (i=0;i<9;i++){
 
-printf("%d ",A[i]);}
+	srand(time(0));
 
+	printf("zadaj pocet prvkov: ");
+	scanf("%d",&d);
+	
+	for(i=0;i<d;i++)
+	{
+		lp=rand()%10+1;
+		A[i]=lp;
+		printf("%d ",A[i]);
+	}
 	
 	printf("\n");	
 	
