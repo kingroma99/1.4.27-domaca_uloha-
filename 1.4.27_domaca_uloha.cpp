@@ -133,7 +133,6 @@ int main()
 {
 	int lp,*ip,*p;
 	int *c,d;
-	int A[d];
 	int i;
 
 	srand(time(0));
@@ -141,9 +140,11 @@ int main()
 	printf("zadaj pocet prvkov: ");
 	scanf("%d",&d);
 	
+	int A[d];
+	
 	for(i=0;i<d;i++)
 	{
-		lp=rand()%10+1;
+	    lp=rand()%10+1;
 		A[i]=lp;
 		printf("%d ",A[i]);
 	}
