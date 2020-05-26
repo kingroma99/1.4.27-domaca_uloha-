@@ -3,17 +3,17 @@
 #include <time.h>
 
 int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
-	int i,j;
+	int i,j,u,v;
 	int a=0;
 	int pocet=1;
 	int rastuci_usek=0;
 	int klesajuci_usek=0;
 	int najvacsi_usek;
 	int usek=0;
-	
-	for (i=a; i<*ip; i++)
+	printf("huj:%d",lp);
+	for (i=a; i<lp; i++)
 	{
-		for (j=a; j<*ip-1;j++)
+		for (j=a; j<lp-1;j++)
 		{	
 		
 			if (*(p+j)<=*(p+j+1))
@@ -40,9 +40,9 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	usek=0;
 	a=0;
 	
-	for (i=a; i<*ip; i++)
+	for (i=a; i<lp; i++)
 	{
-		for (j=a; j<*ip-1;j++)
+		for (j=a; j<lp-1;j++)
 		{   
 			
 			if (*(p+j)>=*(p+j+1))
@@ -72,16 +72,20 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	{
 		a=0; 
 		  
-		for (i=a; i<*ip; i++)
+		for (i=a; i<lp; i++)
 		{
-			for (j=a; j<*ip-1;j++)
+			for (j=a; j<lp-1;j++)
 			{
 	    		if (*(p+j)<=*(p+j+1))
 				{
 					pocet=pocet+1;
 					a++;
+					
 					if (pocet==rastuci_usek)
-					p=(p+j-rastuci_usek+2);
+					{
+						u=pocet;
+						v=j;
+					}
 				}
 				else
 				{
@@ -92,21 +96,27 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 			
 			pocet=1;
 		}
+		
+		p=(p+v-u+2);
 	}	
 	else
 	{ 	
 		a=0;
 		
-		for (i=a; i<*ip; i++)
+		for (i=a; i<lp; i++)
 		{	
-			for (j=a; j<*ip-1;j++)
+			for (j=a; j<lp-1;j++)
 			{
 				if (*(p+j)>=*(p+j+1))
 				{
 					pocet=pocet+1;
 					a++;
+					
 					if (pocet==klesajuci_usek)
-					p=(p+j-klesajuci_usek+2);
+					{
+						u=pocet;
+						v=j;
+					}
 				}
 				else
 				{
@@ -117,6 +127,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 			
 			pocet=1;
 		}
+		p=(p+v-u+2);
 	}
 	
 	if (rastuci_usek>klesajuci_usek)
@@ -152,13 +163,14 @@ int main()
 	printf("\n");	
 	
 	p=&A[0];
+	lp=d;
 	ip=&d;
-	
 	c=najdi_najdlhsi_monotonny_usek(p,lp,ip);
 	printf("najvatsi monotonny usek: ");
 	
 	for (i=0;i<d;i++)
 	{
+		
 		printf(" %d ",*(c+i));
 	}
 	
