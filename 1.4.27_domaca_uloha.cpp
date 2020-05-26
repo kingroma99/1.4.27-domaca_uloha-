@@ -10,7 +10,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 	int klesajuci_usek=0;
 	int najvacsi_usek;
 	int usek=0;
-	printf("huj:%d",lp);
+
 	for (i=a; i<lp; i++)
 	{
 		for (j=a; j<lp-1;j++)
