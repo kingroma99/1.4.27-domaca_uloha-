@@ -16,7 +16,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 		for (j=a; j<lp-1;j++)
 		{	
 		
-			if (*(p+j)<=*(p+j+1))
+			if (p[j]<=p[j+1])
 			{
 				pocet=pocet+1;
 				a++;
@@ -45,7 +45,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 		for (j=a; j<lp-1;j++)
 		{   
 			
-			if (*(p+j)>=*(p+j+1))
+			if (p[j]>=p[j+1])
 			{
 				pocet=pocet+1;
 				a++;
@@ -76,7 +76,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 		{
 			for (j=a; j<lp-1;j++)
 			{
-	    		if (*(p+j)<=*(p+j+1))
+	    		if (p[j]<=p[j+1])
 				{
 					pocet=pocet+1;
 					a++;
@@ -107,7 +107,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 		{	
 			for (j=a; j<lp-1;j++)
 			{
-				if (*(p+j)>=*(p+j+1))
+				if (p[j]>=p[j+1])
 				{
 					pocet=pocet+1;
 					a++;
@@ -142,7 +142,7 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 
 int main()
 {
-	int lp,*ip,*p;
+	int aa,*ab,*ac;
 	int *c,d;
 	int i;
 
@@ -155,23 +155,22 @@ int main()
 	
 	for(i=0;i<d;i++)
 	{
-	    lp=rand()%10+1;
-		A[i]=lp;
+	    aa=rand()%10+1;
+		A[i]=aa;
 		printf("%d ",A[i]);
 	}
 	
 	printf("\n");	
 	
-	p=&A[0];
-	lp=d;
-	ip=&d;
-	c=najdi_najdlhsi_monotonny_usek(p,lp,ip);
+	ac=&A[0];
+	aa=d;
+	ab=&d;
+	c=najdi_najdlhsi_monotonny_usek(ac,aa,ab);
 	printf("najvatsi monotonny usek: ");
 	
 	for (i=0;i<d;i++)
-	{
-		
-		printf(" %d ",*(c+i));
+	{	
+		printf(" %d ",c[i]);
 	}
 	
 	printf("\n");
