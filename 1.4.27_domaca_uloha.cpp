@@ -142,7 +142,6 @@ int *najdi_najdlhsi_monotonny_usek(int*p,int lp,int *ip){
 
 int main()
 {
-	int aa,*ab,*ac;
 	int *c,d;
 	int i;
 
@@ -154,18 +153,14 @@ int main()
 	int A[d];
 	
 	for(i=0;i<d;i++)
-	{
-	    aa=rand()%10+1;
-		A[i]=aa;
+	{  
+		A[i]=rand()%10+1;;
 		printf("%d ",A[i]);
 	}
 	
 	printf("\n");	
 	
-	ac=&A[0];
-	aa=d;
-	ab=&d;
-	c=najdi_najdlhsi_monotonny_usek(ac,aa,ab);
+	c=najdi_najdlhsi_monotonny_usek(&A[0],d,&d);
 	printf("najvatsi monotonny usek: ");
 	
 	for (i=0;i<d;i++)
