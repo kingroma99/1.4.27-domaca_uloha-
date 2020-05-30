@@ -160,7 +160,7 @@ int main()
 	
 	printf("\n");	
 	
-	c=najdi_najdlhsi_monotonny_usek(&A[0],d,&d);
+	c=najdi_najdlhsi_monotonny_usek(A,d,&d);
 	printf("najvatsi monotonny usek: ");
 	
 	for (i=0;i<d;i++)
